@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" max-width="400">
+  <v-card class="mx-auto" max-width="400" :loading="isLoading">
     <v-form class="pa-4">
       <v-row>
         <v-col cols="10">
@@ -82,6 +82,12 @@ export default {
 
   beforeMount() {
     this.getLocation();
+  },
+
+  computed: {
+    isLoading() {
+      return this.$store.isLoading;
+    }
   },
 
   methods: {

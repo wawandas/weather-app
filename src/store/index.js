@@ -43,26 +43,26 @@ export default new Vuex.Store({
   state: {
     data: data,
     apiKey: "ef6fded646b25aeb80ae34d522bb493d",
-    baseUrl: "https://api.openweathermap.org/data/2.5/weather"
+    baseUrl: "https://api.openweathermap.org/data/2.5/weather",
+    isLoading: false
   },
   mutations: {
     setData(state, data) {
-      console.log(data);
       state.data = data;
     }
   },
   actions: {
     fetchData({ commit, state }, params) {
+      state.isLoading = true;
+
       axios
         .get(`${state.baseUrl}${params}&appid=${state.apiKey}&units=metric`)
-        .then(
-          ({ data }) => {
-            commit("setData", data);
-          },
-          () => {
-            //TODO error case
-          }
-        );
+        .then(({ data }) => {
+          commit("setData", data);
+        })
+        .finally(() => {
+          state.isLoading = false;
+        });
     }
   }
 });
