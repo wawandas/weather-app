@@ -9,17 +9,18 @@
       <v-row>
         <v-col cols="10">
           <v-text-field
+            name="city"
             placeholder="Enter city"
             solo
             clearable
             hide-details
             v-model="city"
-            @keydown.enter.prevent="getData('city')"
+            @keydown.enter.prevent="getWeatherForCity"
           >
           </v-text-field>
         </v-col>
         <v-col cols="2" class="align-center">
-          <v-btn icon @click.prevent="getData">
+          <v-btn icon @click.prevent="getWeatherForCoords">
             <v-icon>mdi-map-marker</v-icon>
           </v-btn>
         </v-col>
@@ -28,7 +29,7 @@
     <div v-if="data.cod === 200">
       <v-list-item two-line>
         <v-list-item-content>
-          <v-list-item-title class="headline">{{
+          <v-list-item-title class="headline" data-label="weather-city-name">{{
             data.name
           }}</v-list-item-title>
           <v-list-item-subtitle>
@@ -41,11 +42,11 @@
         <v-row align="center">
           <v-col cols="6">
             <span class="display-3">{{ data.main.temp | celsius }}</span>
-            <br />
-            ({{ data.weather[0].description }})
           </v-col>
           <v-col cols="6" class="justify-center">
-            <v-img :src="getImage()" width="92"></v-img>
+            <img :src="getImage()" />
+            <br />
+            ({{ data.weather[0].description }})
           </v-col>
         </v-row>
       </v-card-text>
@@ -75,10 +76,6 @@
 
 <script>
 export default {
-  props: {
-    data: Object
-  },
-
   data: () => ({
     city: "",
     latitude: "",
@@ -92,6 +89,10 @@ export default {
   computed: {
     isLoading() {
       return this.$store.state.isLoading;
+    },
+
+    data() {
+      return this.$store.state.data;
     }
   },
 
@@ -109,15 +110,18 @@ export default {
       this.latitude = position.coords.latitude;
     },
 
-    getData(typeQuery) {
-      let query = "";
+    getWeatherForCity() {
+      const query = `?q=${this.city}`;
+      this.fetchData(query);
+    },
 
-      if (typeQuery === "city") {
-        query = `?q=${this.city}`;
-      } else {
-        query = `?lat=${this.latitude}&lon=${this.longitude}`;
-      }
+    getWeatherForCoords() {
+      this.getLocation();
+      const query = `?lat=${this.latitude}&lon=${this.longitude}`;
+      this.fetchData(query);
+    },
 
+    fetchData(query) {
       this.$store.dispatch("fetchData", query);
       this.city = "";
     },

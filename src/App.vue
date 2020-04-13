@@ -13,7 +13,7 @@
     </v-app-bar>
 
     <v-content class="align-center indigo lighten-5">
-      <WeatherWidget :data="data" />
+      <WeatherWidget />
     </v-content>
   </v-app>
 </template>
@@ -26,12 +26,6 @@ export default {
 
   components: {
     WeatherWidget
-  },
-
-  computed: {
-    data() {
-      return this.$store.state.data;
-    }
   }
 };
 </script>

@@ -58,6 +58,7 @@ export default new Vuex.Store({
       axios
         .get(`${state.baseUrl}${params}&appid=${state.apiKey}&units=metric`)
         .then(({ data }) => {
+          console.log("d", data);
           commit("setData", data);
         })
         .finally(() => {
