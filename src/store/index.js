@@ -19,7 +19,7 @@ export default new Vuex.Store({
     apiKey: "ef6fded646b25aeb80ae34d522bb493d",
     baseUrl: "https://api.openweathermap.org/data/2.5/weather",
     isLoading: false,
-    error: null
+    error: false
   },
   mutations: {
     setData(state, payload) {
@@ -38,7 +38,7 @@ export default new Vuex.Store({
         .get(`${state.baseUrl}${params}&appid=${state.apiKey}&units=metric`)
         .then(({ data }) => {
           commit("setData", data);
-          commit("setError", null);
+          commit("setError", false);
         })
         .catch(e => {
           commit("setError", e);

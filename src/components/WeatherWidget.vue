@@ -1,14 +1,11 @@
 <template>
   <div>
-    <v-alert
-      v-if="error !== null"
-      border="left"
-      type="warning"
-      close-text="Close Alert"
-      dismissible
-    >
+    <v-snackbar v-model="error">
       Ooops... some error happened, make sure city name is correct.
-    </v-alert>
+      <v-btn color="pink" text @click="dismiss">
+        Close
+      </v-btn>
+    </v-snackbar>
     <v-card
       class="mx-auto"
       max-width="400"
@@ -70,16 +67,17 @@
 
         <v-list-item>
           <v-list-item-icon>
+            <v-icon>mdi-eye-outline</v-icon>
+          </v-list-item-icon>
+          <v-list-item-subtitle>{{ data.visibility }} m</v-list-item-subtitle>
+        </v-list-item>
+
+        <v-list-item>
+          <v-list-item-icon>
             <v-icon>mdi-water</v-icon>
           </v-list-item-icon>
           <v-list-item-subtitle>{{ data.main.humidity }}%</v-list-item-subtitle>
         </v-list-item>
-
-        <v-card-actions>
-          <v-btn icon>
-            <v-icon>mdi-cached</v-icon>
-          </v-btn>
-        </v-card-actions>
       </div>
     </v-card>
   </div>
@@ -106,8 +104,11 @@ export default {
       return this.$store.state.data;
     },
 
-    error() {
-      return this.$store.state.error;
+    error: {
+      get() {
+        return this.$store.state.error;
+      },
+      set() {}
     }
   },
 
@@ -128,6 +129,10 @@ export default {
     getWeatherForCity() {
       const query = `?q=${this.city}`;
       this.fetchData(query);
+    },
+
+    dismiss() {
+      this.$store.state.error = false;
     },
 
     getWeatherForCoords() {

@@ -1,24 +1,36 @@
 # weather-app
 
 ## Project setup
+
 ```
 yarn install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 yarn serve
 ```
 
 ### Compiles and minifies for production
+
 ```
 yarn build
 ```
 
-### Lints and fixes files
+### To test
+
 ```
-yarn lint
+yarn test [NAME_OF_SPEC]
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+---
+
+Points I would improve if I had more time:
+
+1. Normalization of received data
+2. Better UI and UX
+3. Improve unit testing
+4. Better error handling
+5. Add validation to inputs
+6. Better structure of store
