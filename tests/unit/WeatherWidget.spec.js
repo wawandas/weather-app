@@ -84,6 +84,10 @@ describe("WeatherWidget.vue", () => {
 
     mock.onGet(/\/weather/).reply(200, {
       ...data,
+      sys: {
+        ...data.sys,
+        country: "DE"
+      },
       name: "Berlin"
     });
 
@@ -96,7 +100,7 @@ describe("WeatherWidget.vue", () => {
     await wrapper.vm.$nextTick();
 
     expect(wrapper.find('div[data-label="weather-city-name"]').text()).toBe(
-      "Berlin"
+      "Berlin, DE"
     );
   });
 });

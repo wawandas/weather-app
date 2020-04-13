@@ -1,50 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`WeatherWidget.vue renders correctly 1`] = `
-<div class="mx-auto v-card v-sheet theme--light" style="max-width: 400px;">
-  <form novalidate="novalidate" class="v-form pa-4">
-    <div class="row">
-      <div class="col col-10">
-        <div class="v-input v-input--hide-details theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--placeholder">
-          <div class="v-input__control">
-            <div class="v-input__slot">
-              <div class="v-text-field__slot"><input name="city" id="input-6" placeholder="Enter city" type="text"></div>
-              <div class="v-input__append-inner">
-                <div class="v-input__icon v-input__icon--clear"><button disabled="disabled" type="button" aria-label="clear icon" class="v-icon notranslate v-icon--disabled v-icon--link material-icons theme--light">$clear</button></div>
+<div>
+  <!---->
+  <div class="mx-auto v-card v-sheet theme--light" style="max-width: 400px;">
+    <form novalidate="novalidate" class="v-form pa-4">
+      <div class="row">
+        <div class="col col-10">
+          <div class="v-input v-input--hide-details theme--light v-text-field v-text-field--single-line v-text-field--solo v-text-field--enclosed v-text-field--placeholder">
+            <div class="v-input__control">
+              <div class="v-input__slot">
+                <div class="v-text-field__slot"><input name="city" id="input-6" placeholder="Enter city" type="text"></div>
+                <div class="v-input__append-inner">
+                  <div class="v-input__icon v-input__icon--clear"><button disabled="disabled" type="button" aria-label="clear icon" class="v-icon notranslate v-icon--disabled v-icon--link material-icons theme--light">$clear</button></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <div class="align-center col col-2"><button type="button" class="v-btn v-btn--flat v-btn--icon v-btn--round theme--light v-size--default"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-map-marker theme--light"></i></span></button></div>
       </div>
-      <div class="align-center col col-2"><button type="button" class="v-btn v-btn--flat v-btn--icon v-btn--round theme--light v-size--default"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-map-marker theme--light"></i></span></button></div>
-    </div>
-  </form>
-  <div>
-    <div tabindex="-1" class="v-list-item v-list-item--two-line theme--light">
-      <div class="v-list-item__content">
-        <div data-label="weather-city-name" class="v-list-item__title headline">London</div>
-        <div class="v-list-item__subtitle">
-          30 Mon, 16:20, Drizzle
-        </div>
-      </div>
-    </div>
-    <div class="v-card__text">
-      <div class="row align-center">
-        <div class="col col-6"><span class="display-3">28°C</span></div>
-        <div class="justify-center col col-6"><img src=""> <br>
-          (light intensity drizzle)
-        </div>
-      </div>
-    </div>
-    <div tabindex="-1" class="v-list-item theme--light">
-      <div class="v-list-item__icon"><i aria-hidden="true" class="v-icon notranslate mdi mdi-send theme--light"></i></div>
-      <div class="v-list-item__subtitle">4.1 m/c</div>
-    </div>
-    <div tabindex="-1" class="v-list-item theme--light">
-      <div class="v-list-item__icon"><i aria-hidden="true" class="v-icon notranslate mdi mdi-cloud-download theme--light"></i></div>
-      <div class="v-list-item__subtitle">81%</div>
-    </div>
-    <div class="v-card__actions"><button type="button" class="v-btn v-btn--flat v-btn--icon v-btn--round theme--light v-size--default"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate mdi mdi-cached theme--light"></i></span></button></div>
+    </form>
+    <!---->
   </div>
 </div>
 `;
