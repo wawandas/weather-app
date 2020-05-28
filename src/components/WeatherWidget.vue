@@ -2,16 +2,9 @@
   <div>
     <v-snackbar v-model="error">
       Ooops... some error happened, make sure city name is correct.
-      <v-btn color="pink" text @click="dismiss">
-        Close
-      </v-btn>
+      <v-btn color="pink" text @click="dismiss">Close</v-btn>
     </v-snackbar>
-    <v-card
-      class="mx-auto"
-      max-width="400"
-      :loading="isLoading"
-      :disabled="isLoading"
-    >
+    <v-card class="mx-auto" max-width="400" :loading="isLoading" :disabled="isLoading">
       <v-form class="pa-4">
         <v-row>
           <v-col cols="10">
@@ -23,8 +16,7 @@
               hide-details
               v-model="city"
               @keydown.enter.prevent="getWeatherForCity"
-            >
-            </v-text-field>
+            ></v-text-field>
           </v-col>
           <v-col cols="2" class="align-center">
             <v-btn icon @click.prevent="getWeatherForCoords">
@@ -36,12 +28,11 @@
       <div v-if="data.cod === 200">
         <v-list-item two-line>
           <v-list-item-content>
-            <v-list-item-title class="headline" data-label="weather-city-name"
-              >{{ data.name }}, {{ data.sys.country }}</v-list-item-title
-            >
-            <v-list-item-subtitle>
-              {{ data.dt | formatedDate }}, {{ data.weather[0].main }}
-            </v-list-item-subtitle>
+            <v-list-item-title
+              class="headline"
+              data-label="weather-city-name"
+            >{{ data.name }}, {{ data.sys.country }}</v-list-item-title>
+            <v-list-item-subtitle>{{ data.dt | formatedDate }}, {{ data.weather[0].main }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
 
@@ -121,9 +112,9 @@ export default {
       }
     },
 
-    setCoords(position) {
-      this.longitude = position.coords.longitude;
-      this.latitude = position.coords.latitude;
+    setCoords({ coords: { longitude, latitude } }) {
+      this.longitude = longitude;
+      this.latitude = latitude;
     },
 
     getWeatherForCity() {
